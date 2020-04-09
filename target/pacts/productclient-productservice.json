@@ -1,0 +1,59 @@
+{
+    "consumer": {
+        "name": "productclient"
+    },
+    "provider": {
+        "name": "productservice"
+    },
+    "messages": [
+        {
+            "description": "a product created message",
+            "metaData": {
+                "Content-Type": "application/json; charset=UTF-8"
+            },
+            "contents": {
+                "messageUuid": "string",
+                "product": {
+                    "id": 42,
+                    "name": "Batata"
+                }
+            },
+            "matchingRules": {
+                "body": {
+                    "$.messageUuid": {
+                        "matchers": [
+                            {
+                                "match": "type"
+                            }
+                        ],
+                        "combine": "AND"
+                    },
+                    "$.product.id": {
+                        "matchers": [
+                            {
+                                "match": "number"
+                            }
+                        ],
+                        "combine": "AND"
+                    },
+                    "$.product.name": {
+                        "matchers": [
+                            {
+                                "match": "type"
+                            }
+                        ],
+                        "combine": "AND"
+                    }
+                }
+            }
+        }
+    ],
+    "metadata": {
+        "pactSpecification": {
+            "version": "3.0.0"
+        },
+        "pact-jvm": {
+            "version": "3.5.20"
+        }
+    }
+}

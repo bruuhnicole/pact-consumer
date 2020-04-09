@@ -1,4 +1,4 @@
-package io.reflectoring;
+package com.product.message;
 
 import java.io.IOException;
 
@@ -35,12 +35,10 @@ public class MessageConsumerTest {
 						.stringType("name", "Batata")
 						.closeObject();
 
-		// @formatter:off
 		return builder
 						.expectsToReceive("a product created message")
 						.withContent(body)
 						.toPact();
-		// @formatter:on
 	}
 
 	@Test
